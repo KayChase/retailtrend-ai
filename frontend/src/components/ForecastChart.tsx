@@ -62,17 +62,17 @@ export function ForecastChart({ category }: Props) {
       </div>
       <ResponsiveContainer width="100%" height={260}>
         <LineChart data={rows}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#2a2f3a" />
+          <CartesianGrid strokeDasharray="3 3" stroke="#e8e2e2" />
           <XAxis dataKey="date" tick={{ fontSize: 11 }} />
           <YAxis tick={{ fontSize: 11 }} />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="actual" name="Actual" stroke="#2563eb" dot={false} connectNulls />
+          <Line type="monotone" dataKey="actual" name="Actual" stroke="#cc0000" dot={false} connectNulls />
           <Line
             type="monotone"
             dataKey="forecast"
             name="Forecast"
-            stroke="#f59e0b"
+            stroke="#1a1a1a"
             strokeDasharray="5 5"
             dot={false}
             connectNulls

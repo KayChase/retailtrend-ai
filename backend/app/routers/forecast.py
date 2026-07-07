@@ -1,7 +1,14 @@
 from fastapi import APIRouter, HTTPException
 
 from app.config import CATEGORIES
-from app.models.schemas import ForecastPoint, ForecastResult, SeasonalPattern, SeasonalPoint
+from app.models.schemas import (
+    ForecastAccuracy,
+    ForecastPoint,
+    ForecastResult,
+    SeasonalPattern,
+    SeasonalPoint,
+)
+from app.services.forecast_accuracy import get_accuracy, log_forecast
 from app.services.forecasting import forecast_sales, seasonal_pattern
 
 router = APIRouter(prefix="/api/forecast", tags=["forecast"])
@@ -16,12 +23,21 @@ def get_forecast(category: str) -> ForecastResult:
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
 
+    log_forecast(category, result)
+
     return ForecastResult(
         category=result["category"],
         method=result["method"],
         history=[ForecastPoint(**p) for p in result["history"]],
         forecast=[ForecastPoint(**p) for p in result["forecast"]],
     )
+
+
+@router.get("/{category}/accuracy", response_model=ForecastAccuracy)
+def get_forecast_accuracy(category: str) -> ForecastAccuracy:
+    if category not in CATEGORIES:
+        raise HTTPException(status_code=404, detail=f"Unknown category '{category}'")
+    return ForecastAccuracy(**get_accuracy(category))
 
 
 @router.get("/{category}/seasonal", response_model=SeasonalPattern)

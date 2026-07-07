@@ -7,16 +7,18 @@ the dashboard usable in demos/offline dev while still hitting the real API
 when it's reachable.
 """
 import time
-from datetime import datetime, timedelta
-from functools import lru_cache
 
 import pandas as pd
 
-from app.config import CATEGORIES, STATES
+from app.config import CATEGORIES
 from app.services.data_loader import category_series
 
 _CACHE_TTL_SECONDS = 60 * 60  # Google Trends data doesn't need to be fresher than this
 _cache: dict[str, tuple[float, object]] = {}
+
+
+def clear_cache() -> None:
+    _cache.clear()
 
 
 def _cached(key: str, builder):

@@ -1,8 +1,16 @@
 from fastapi import APIRouter, HTTPException
 
 from app.config import CATEGORIES
-from app.models.schemas import RegionHeatMap, RegionValue, TrendPoint, TrendSeries
+from app.models.schemas import (
+    CategoryProductTrends,
+    ProductTrend,
+    RegionHeatMap,
+    RegionValue,
+    TrendPoint,
+    TrendSeries,
+)
 from app.services.google_trends import get_interest_by_region, get_interest_over_time
+from app.services.product_trends import get_product_trends
 
 router = APIRouter(prefix="/api/trends", tags=["trends"])
 
@@ -28,6 +36,18 @@ def get_trend(category: str) -> TrendSeries:
         change_pct=_change_pct(series),
         source=source,
         points=points,
+    )
+
+
+@router.get("/{category}/products", response_model=CategoryProductTrends)
+def get_category_products(category: str) -> CategoryProductTrends:
+    if category not in CATEGORIES:
+        raise HTTPException(status_code=404, detail=f"Unknown category '{category}'")
+
+    products = get_product_trends(category)
+    return CategoryProductTrends(
+        category=category,
+        products=[ProductTrend(**p) for p in products],
     )
 
 

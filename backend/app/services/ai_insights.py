@@ -9,7 +9,7 @@ from typing import Optional
 
 import anthropic
 
-from app.config import ANTHROPIC_API_KEY, CATEGORIES
+from app.config import ANTHROPIC_API_KEY, CATEGORIES, CATEGORY_LABELS
 from app.models.schemas import Recommendation
 from app.services.forecasting import forecast_change_pct
 from app.services.google_trends import get_interest_over_time
@@ -86,7 +86,7 @@ def _claude_recommendation(label: str, trend_pct: float, forecast_pct: float) ->
 
 
 def generate_recommendation(category: str) -> Recommendation:
-    label = category.replace("_", " ").title()
+    label = CATEGORY_LABELS[category]
     search_term = CATEGORIES[category]
     trend_pct = _trend_change_pct(search_term)
     forecast_pct = forecast_change_pct(category)

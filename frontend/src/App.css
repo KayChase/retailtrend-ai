@@ -10,7 +10,35 @@
 }
 
 .app-header h1 {
-  margin: 0 0 4px;
+  margin: 0;
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 4px;
+}
+
+.heart-logo {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.slogan {
+  color: var(--accent);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.disclaimer {
+  color: var(--text);
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 8px;
 }
 
 .muted {
@@ -171,6 +199,16 @@
   align-items: center;
   justify-content: center;
   color: #08060d;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.heatmap-cell:hover {
+  border-color: var(--accent);
+}
+
+.heatmap-cell-selected {
+  border-color: var(--text-h);
 }
 
 .heatmap-region {
@@ -180,4 +218,208 @@
 
 .heatmap-value {
   font-size: 11px;
+}
+
+.store-drilldown {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.store-select-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.store-detail-heading {
+  font-size: 14px;
+  margin: 14px 0 6px;
+}
+
+.full-width-section {
+  margin-top: 20px;
+}
+
+.data-upload-card {
+  margin-bottom: 20px;
+}
+
+.data-upload-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.upload-button {
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.upload-warning {
+  font-size: 12px;
+  color: #8a6508;
+  background: rgba(184, 134, 11, 0.1);
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin: 8px 0 0;
+}
+
+.upload-warning.error {
+  color: #cc0000;
+  background: rgba(204, 0, 0, 0.08);
+}
+
+.location-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.location-input {
+  flex: 1;
+  font: inherit;
+  font-size: 13px;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text-h);
+}
+
+.weather-days {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.weather-day {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 4px 2px;
+}
+
+.weather-date {
+  font-weight: 600;
+  min-width: 90px;
+}
+
+.weather-precip {
+  color: var(--text);
+  font-size: 12px;
+}
+
+.accuracy-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.accuracy-table th {
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--text);
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.accuracy-table td {
+  padding: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.store-rec-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.store-rec-card {
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  background: var(--bg);
+}
+
+.store-rec-card.priority-high {
+  border-left-color: #cc0000;
+}
+
+.store-rec-card.priority-medium {
+  border-left-color: #b8860b;
+}
+
+.store-rec-card.priority-low {
+  border-left-color: #2e7d32;
+}
+
+.store-rec-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.store-rec-product {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.priority-pill {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.priority-pill.priority-high {
+  background: rgba(204, 0, 0, 0.12);
+  color: #cc0000;
+}
+
+.priority-pill.priority-medium {
+  background: rgba(184, 134, 11, 0.15);
+  color: #8a6508;
+}
+
+.priority-pill.priority-low {
+  background: rgba(46, 125, 50, 0.12);
+  color: #2e7d32;
+}
+
+.store-rec-action {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.store-rec-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  font-size: 12px;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.store-rec-text {
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0 0 6px;
 }

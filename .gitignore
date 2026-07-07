@@ -3,6 +3,8 @@ backend/__pycache__/
 backend/**/__pycache__/
 backend/.env
 backend/app/data/sample_sales.csv
+backend/app/data/uploaded_sales.csv
+backend/app/data/forecast_log.json
 
 frontend/node_modules/
 frontend/dist/

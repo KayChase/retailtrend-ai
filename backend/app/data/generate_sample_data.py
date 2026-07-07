@@ -17,14 +17,23 @@ MONTHS_OF_HISTORY = 36  # 3 years
 
 # (base_units, yearly_growth, seasonal_peak_month, seasonal_strength)
 CATEGORY_PROFILE = {
-    "allergy_medicine": (1200, 0.06, 4, 0.55),   # peaks spring (April)
-    "bug_spray":        (600, 0.04, 6, 0.75),    # peaks summer (June)
-    "melatonin":        (900, 0.10, 0, 0.20),    # mild winter bump
-    "vitamin_d":        (700, 0.08, 11, 0.35),   # peaks winter (Dec)
-    "sunscreen":        (1000, 0.05, 6, 0.85),   # strong summer peak
-    "cold_flu":         (1500, 0.03, 0, 0.65),   # peaks Jan
-    "cough_drops":      (800, 0.03, 0, 0.50),    # peaks Jan
-    "hand_sanitizer":   (650, 0.02, 0, 0.15),    # fairly flat
+    "pharmacy":                 (2000, 0.03, 0, 0.35),   # winter cold/flu bump
+    "health":                   (1200, 0.07, 0, 0.30),   # New Year health kick
+    "beauty":                   (900, 0.05, 11, 0.30),   # Dec gifting
+    "personal_care":            (1100, 0.02, 0, 0.10),   # fairly flat
+    "oral_care":                (700, 0.02, 0, 0.08),    # fairly flat
+    "baby":                     (500, 0.04, 0, 0.10),    # fairly flat
+    "grocery":                  (5000, 0.02, 10, 0.25),  # Thanksgiving bump
+    "candy_snacks":             (1400, 0.03, 9, 0.55),   # Halloween peak
+    "beverages":                (1800, 0.04, 6, 0.45),   # summer peak
+    "household":                (1000, 0.02, 0, 0.12),   # fairly flat
+    "pet_care":                 (600, 0.05, 0, 0.10),    # fairly flat
+    "seasonal":                 (400, 0.10, 11, 0.95),   # strong holiday peak
+    "electronics":              (800, 0.06, 11, 0.75),   # Black Friday/Christmas
+    "toys":                     (700, 0.08, 11, 0.90),   # strong Dec peak
+    "greeting_cards_gift_wrap": (450, 0.02, 11, 0.65),   # Dec peak
+    "photo_center":             (300, -0.01, 11, 0.35),  # declining, Dec bump
+    "checkout_impulse":         (900, 0.03, 11, 0.20),   # mild Dec bump
 }
 
 # Relative population/store-density weighting so heat maps look plausible

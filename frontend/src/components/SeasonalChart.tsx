@@ -39,11 +39,11 @@ export function SeasonalChart({ category }: Props) {
       </div>
       <ResponsiveContainer width="100%" height={220}>
         <BarChart data={data.points}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#2a2f3a" />
+          <CartesianGrid strokeDasharray="3 3" stroke="#e8e2e2" />
           <XAxis dataKey="month" tick={{ fontSize: 11 }} />
           <YAxis tick={{ fontSize: 11 }} />
           <Tooltip />
-          <Bar dataKey="index" fill="#2563eb" radius={[4, 4, 0, 0]} />
+          <Bar dataKey="index" fill="#cc0000" radius={[4, 4, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>
