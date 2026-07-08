@@ -10,7 +10,7 @@ import time
 
 import pandas as pd
 
-from app.config import CATEGORIES
+from app.config import CATEGORIES, STATE_NAME_TO_ABBR
 from app.services.data_loader import category_series
 
 _CACHE_TTL_SECONDS = 60 * 60  # Google Trends data doesn't need to be fresher than this
@@ -77,6 +77,12 @@ def get_interest_by_region(search_term: str) -> tuple[pd.Series, str]:
             if df.empty:
                 raise ValueError("empty response")
             series = df[search_term]
+            # pytrends returns full state names ("California") — remap to the
+            # two-letter codes used everywhere else (STATES, store_locations.csv).
+            series = series.rename(index=STATE_NAME_TO_ABBR)
+            series = series[series.index.isin(STATE_NAME_TO_ABBR.values())]
+            if series.empty:
+                raise ValueError("no recognizable US states in response")
             return (series, "live")
         except Exception:
             category = next((k for k, v in CATEGORIES.items() if v == search_term), None)
